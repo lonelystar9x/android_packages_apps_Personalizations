@@ -15,10 +15,20 @@
  */
 package com.rising.settings.fragments
 
+import android.app.Activity
+import android.content.ContentResolver
 import android.content.Context
 import android.os.Bundle
+import android.provider.Settings
+import androidx.preference.ListPreference
 import androidx.preference.Preference
+import androidx.preference.PreferenceCategory
+import androidx.preference.PreferenceScreen
+import androidx.preference.Preference.OnPreferenceChangeListener
+import androidx.preference.SwitchPreferenceCompat
 import com.android.internal.logging.nano.MetricsProto
+import com.android.internal.util.android.Utils
+import com.android.settings.preferences.CustomSeekBarPreference
 import com.android.settings.R
 import com.android.settings.search.BaseSearchIndexProvider
 import com.android.settings.utils.SystemRestartUtils
@@ -31,6 +41,10 @@ class Notifications : OptimizedSettingsFragment(), Preference.OnPreferenceChange
         const val TAG = "Notifications"
         
         private const val COMPACT_HUN_KEY = "persist.sys.compact_hun.enabled"
+        private const val FLASHLIGHT_CATEGORY = "flashlight_category"
+        private const val FLASHLIGHT_CALL_PREF = "flashlight_on_call"
+        private const val FLASHLIGHT_DND_PREF = "flashlight_on_call_ignore_dnd"
+        private const val FLASHLIGHT_RATE_PREF = "flashlight_on_call_rate"
 
         /**
          * For search
@@ -45,25 +59,57 @@ class Notifications : OptimizedSettingsFragment(), Preference.OnPreferenceChange
     }
     
     private var mCompactHUNPref: Preference? = null
+    private var mFlashOnCall: ListPreference? = null
+    private var mFlashOnCallIgnoreDND: SwitchPreferenceCompat? = null
+    private var mFlashOnCallRate: CustomSeekBarPreference? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         addPreferencesFromResource(R.xml.rising_settings_notification)
-        mCompactHUNPref = findCachedPreference(COMPACT_HUN_KEY)
-        mCompactHUNPref?.onPreferenceChangeListener = this
+
+        val prefScreen: PreferenceScreen = preferenceScreen
+        val mContext: Context = requireActivity().applicationContext
+        val resolver: ContentResolver = mContext.contentResolver
+
+        mCompactHUNPref = findPreference(COMPACT_HUN_KEY)
+        mCompactHUNPref?.setOnPreferenceChangeListener(this)
+
+    if (!Utils.deviceHasFlashlight(mContext)) {
+        val flashlightCategory = prefScreen.findPreference<PreferenceCategory>(FLASHLIGHT_CATEGORY)
+        if (flashlightCategory != null) {
+            prefScreen.removePreference(flashlightCategory)
+        }
+    } else {
+        mFlashOnCall = prefScreen.findPreference<ListPreference>(FLASHLIGHT_CALL_PREF)
+        mFlashOnCall?.setOnPreferenceChangeListener(this)
+
+        mFlashOnCallIgnoreDND = prefScreen.findPreference<SwitchPreferenceCompat>(FLASHLIGHT_DND_PREF)
+        val value = Settings.System.getInt(resolver, Settings.System.FLASHLIGHT_ON_CALL, 0)
+
+        mFlashOnCallRate = prefScreen.findPreference<CustomSeekBarPreference>(FLASHLIGHT_RATE_PREF)
+
+        mFlashOnCallIgnoreDND?.isEnabled = value > 1
+        mFlashOnCallRate?.isEnabled = value > 0
     }
+}
     
     override fun onPreferenceChange(preference: Preference, newValue: Any?): Boolean {
         return when (preference) {
-            mCompactHUNPref -> {
-                val context = getSafeContext()
-                context?.let { SystemRestartUtils.showSystemUIRestartDialog(it) }
-                true
-            }
-            else -> false
+        mCompactHUNPref -> {
+            val context = getSafeContext()
+            context?.let { SystemRestartUtils.showSystemUIRestartDialog(it) }
+            true
         }
+        mFlashOnCall -> {
+            val value = (newValue as String).toInt()
+            mFlashOnCallIgnoreDND?.isEnabled = value > 1
+            mFlashOnCallRate?.isEnabled = value > 0
+            true
+        }
+        else -> false
     }
+}
 
     override fun getMetricsCategory(): Int {
         return MetricsProto.MetricsEvent.VIEW_UNKNOWN
