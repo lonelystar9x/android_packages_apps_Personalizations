@@ -85,7 +85,15 @@
             android:key="keyguard_now_bar_enabled"
             android:title="@string/keyguard_now_bar_enabled_title"
             android:summary="@string/keyguard_now_bar_enabled_summary"
-            android:defaultValue="false"
+            android:defaultValue="false" />
+
+	<com.android.settings.preferences.SystemSettingSeekBarPreference
+    	    android:key="nowbar_margin_bottom"
+    	    android:title="Nowbar height"
+    	    android:summary="Adjust the height of the Nowbar"
+    	    android:defaultValue="18"
+    	    android:min="10"
+    	    android:max="210"
             lineage:position="bottom" />
 
     </PreferenceCategory>
