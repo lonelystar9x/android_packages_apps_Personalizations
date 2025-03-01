@@ -2143,6 +2143,8 @@
     <string name="google_spoof_option_disabled">Enabling Google apps spoofing is not needed by current device</string>
 
     <!-- Backup/Restore settings -->
+    <string name="toolbox_general_category">General</string>
+    <string name="toolbox_backup_category">Backup and Restore</string>
     <string name="backup_restore_title">Backup and Restore</string>
     <string name="backup_restore_title_summary">Backup current personalization settings or restore previous ones</string>
     <string name="backup_settings_title">Backup Personalization Settings</string>

@@ -20,6 +20,10 @@
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
     android:title="@string/toolbox_title">
 
+    <PreferenceCategory
+        android:key="toolbox_general_category"
+        android:title="@string/toolbox_general_category">
+
         <com.android.settings.preferences.ui.AdaptivePreference
             android:key="extras"
             android:icon="@drawable/ic_cog"
@@ -48,7 +52,7 @@
             android:title="@string/spoofing_title"
             android:summary="@string/spoofing_title_summary"
             android:fragment="com.rising.settings.fragments.Spoof" />
-            
+
        <!-- QuickSwitch -->
         <com.android.settings.preferences.ui.AdaptivePreference
             android:key="quickswitch"
@@ -57,5 +61,27 @@
             android:summary="@string/quickswitch_launcher_summary" 
             android:fragment="com.rising.settings.fragments.QuickSwitch"
             lineage:position="bottom" /> 
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="toolbox_backup_category"
+        android:title="@string/toolbox_backup_category">
+
+        <com.android.settings.preferences.ui.AdaptivePreference
+            android:key="backup_personalization_settings"
+            android:title="@string/backup_settings_title"
+            android:summary="@string/backup_settings_summary"
+            android:icon="@drawable/ic_backup"
+            lineage:position="top" />
+
+        <com.android.settings.preferences.ui.AdaptivePreference
+            android:key="restore_personalization_settings"
+            android:title="@string/restore_settings_title"
+            android:summary="@string/restore_settings_summary"
+            android:icon="@drawable/ic_restore"
+            lineage:position="bottom" />
+
+    </PreferenceCategory>
 
 </PreferenceScreen>
