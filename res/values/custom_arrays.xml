@@ -32,7 +32,7 @@
 
     <!-- Themes - Lock/Unlock Sounds -->
     <string-array name="themes_lock_unlock_sounds_entries" translatable="false">
-        <item>Default</item>
+        <item>@string/default_value</item>
         <item>Amazon Fire</item>
         <item>Asus Zenfone Max</item>
         <item>Essential PH-1</item>
@@ -1647,18 +1647,6 @@
         <item>4</item>
         <item>5</item>
         <item>6</item>
-    </string-array>
-    
-    <string-array name="pulse_custom_gravity_entries">
-        <item>@string/pulse_custom_gravity_bottom</item>
-        <item>@string/pulse_custom_gravity_top</item>
-        <item>@string/pulse_custom_gravity_center</item>
-    </string-array>
-
-    <string-array name="pulse_custom_gravity_values" translatable="false">
-        <item>0</item>
-        <item>1</item>
-        <item>2</item>
     </string-array>
     
     <string-array name="settings_style_entries">

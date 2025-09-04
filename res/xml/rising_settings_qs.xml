@@ -194,7 +194,7 @@
             android:defaultValue="0" />
 
         <!-- Squiggle animation -->
-        <com.android.settings.preferences.SystemSettingSwitchPreference
+        <com.android.settings.preferences.SecureSettingSwitchPreference
             android:key="show_media_squiggle_animation"
             android:title="@string/show_squiggle_animation_title"
             android:summary="@string/show_squiggle_animation_summary"
