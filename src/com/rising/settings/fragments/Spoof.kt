@@ -40,7 +40,7 @@ import com.android.internal.util.android.SystemRestartUtils
 import com.android.settings.R
 import com.android.settings.SettingsPreferenceFragment
 import com.android.settings.preferences.KeyboxDataPreference
-import com.android.settings.preferences.SecureSettingSwitchPreference;
+import com.android.settings.preferences.SecureSettingSwitchPreference
 import com.android.settings.preferences.SystemPropertySwitchPreference
 import com.android.settings.search.BaseSearchIndexProvider
 import com.android.settings.utils.DeviceUtils
