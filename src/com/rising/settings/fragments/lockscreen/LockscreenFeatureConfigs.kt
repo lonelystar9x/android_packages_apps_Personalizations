@@ -30,10 +30,12 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.*
 import androidx.compose.ui.graphics.*
 import androidx.compose.ui.platform.*
+import androidx.compose.ui.res.*
 import androidx.compose.ui.text.font.*
 import androidx.compose.ui.unit.*
 import com.android.settings.utils.SystemRestartUtils
 import kotlinx.coroutines.launch
+import com.android.settings.R
 
 data class NowBarConfig(
     val enabled: Boolean = false,
@@ -83,13 +85,13 @@ fun NowBarConfigContent(
         verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
         Text(
-            text = "Now Bar",
+            text = stringResource(R.string.tab_now),
             style = MaterialTheme.typography.titleLarge,
             fontWeight = FontWeight.Bold,
             color = if (isDarkTheme) Color.White else MaterialTheme.colorScheme.onSurface
         )
         Text(
-            text = "Quick info bar at the bottom",
+            text = stringResource(R.string.now_bar_summarys),
             style = MaterialTheme.typography.bodyMedium,
             color = if (isDarkTheme) 
                 Color.White.copy(alpha = 0.7f) 
@@ -119,7 +121,7 @@ fun NowBarConfigContent(
                     )
                     Spacer(modifier = Modifier.width(12.dp))
                     Text(
-                        text = "Not supported by current clock style. Will be disabled when you apply.",
+                        text = stringResource(R.string.display_support_mess),
                         style = MaterialTheme.typography.bodySmall,
                         color = if (isDarkTheme)
                             Color.White.copy(alpha = 0.8f)
@@ -131,8 +133,8 @@ fun NowBarConfigContent(
         }
 
         ConfigCard(
-            title = "Enable Now Bar",
-            subtitle = if (config.enabled) "Active" else "Disabled",
+            title = stringResource(R.string.now_bar_enable),
+            subtitle = if (config.enabled) stringResource(R.string.active_string) else stringResource(R.string.disable),
             icon = Icons.Default.ViewCarousel,
             enabled = config.enabled && supportsCustomization,
             isDarkTheme = isDarkTheme
@@ -152,7 +154,7 @@ fun NowBarConfigContent(
         
         if (config.enabled && supportsCustomization) {
             SliderCard(
-                title = "Bottom Margin",
+                title = stringResource(R.string.bottom_margin),
                 value = config.marginBottom,
                 valueRange = 0f..210f,
                 unit = "dp",
@@ -223,14 +225,14 @@ fun PeekDisplayConfigContent(
         verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
         Text(
-            text = "Peek Display",
+            text = stringResource(R.string.peek_display),
             style = MaterialTheme.typography.titleLarge,
             fontWeight = FontWeight.Bold,
             color = if (isDarkTheme) Color.White else MaterialTheme.colorScheme.onSurface
         )
         
         Text(
-            text = "Notification previews on lockscreen",
+            text = stringResource(R.string.peek_display_summarys),
             style = MaterialTheme.typography.bodyMedium,
             color = if (isDarkTheme) 
                 Color.White.copy(alpha = 0.7f) 
@@ -261,7 +263,7 @@ fun PeekDisplayConfigContent(
                     )
                     Spacer(modifier = Modifier.width(12.dp))
                     Text(
-                        text = "Not supported by current clock style. Will be disabled when you apply.",
+                        text = stringResource(R.string.display_support_mess),
                         style = MaterialTheme.typography.bodySmall,
                         color = if (isDarkTheme)
                             Color.White.copy(alpha = 0.8f)
@@ -273,8 +275,8 @@ fun PeekDisplayConfigContent(
         }
 
         ConfigCard(
-            title = "Enable Peek Display",
-            subtitle = if (config.enabled) "Active" else "Disabled",
+            title = stringResource(R.string.peek_display_enable),
+            subtitle = if (config.enabled) stringResource(R.string.active_string) else stringResource(R.string.disable),
             icon = Icons.Default.NotificationsActive,
             enabled = config.enabled && supportsCustomization,
             isDarkTheme = isDarkTheme
@@ -337,7 +339,7 @@ fun PeekDisplayConfigContent(
                         Spacer(modifier = Modifier.width(16.dp))
                         Column(modifier = Modifier.weight(1f)) {
                             Text(
-                                text = "Peek Display Style",
+                                text = stringResource(R.string.peek_display_style),
                                 style = MaterialTheme.typography.bodyLarge,
                                 fontWeight = FontWeight.Medium,
                                 color = if (isDarkTheme) Color.White else MaterialTheme.colorScheme.onSurface
@@ -416,7 +418,7 @@ fun PeekDisplayConfigContent(
                         Spacer(modifier = Modifier.width(16.dp))
                         Column(modifier = Modifier.weight(1f)) {
                             Text(
-                                text = "Peek display Location",
+                                text = stringResource(R.string.peek_display_location),
                                 style = MaterialTheme.typography.bodyLarge,
                                 fontWeight = FontWeight.Medium,
                                 color = if (isDarkTheme) Color.White else MaterialTheme.colorScheme.onSurface
@@ -524,14 +526,14 @@ fun WeatherConfigContent(
         verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
         Text(
-            text = "Weather",
+            text = stringResource(R.string.tab_weather),
             style = MaterialTheme.typography.titleLarge,
             fontWeight = FontWeight.Bold,
             color = if (isDarkTheme) Color.White else MaterialTheme.colorScheme.onSurface
         )
         
         Text(
-            text = "Weather info on lockscreen",
+            text = stringResource(R.string.weather_info),
             style = MaterialTheme.typography.bodyMedium,
             color = if (isDarkTheme) 
                 Color.White.copy(alpha = 0.7f) 
@@ -562,7 +564,7 @@ fun WeatherConfigContent(
                     )
                     Spacer(modifier = Modifier.width(12.dp))
                     Text(
-                        text = "Not supported by current clock style. Will be disabled when you apply.",
+                        text = stringResource(R.string.display_support_mess),
                         style = MaterialTheme.typography.bodySmall,
                         color = if (isDarkTheme)
                             Color.White.copy(alpha = 0.8f)
@@ -574,8 +576,8 @@ fun WeatherConfigContent(
         }
 
         ConfigCard(
-            title = "Enable Weather",
-            subtitle = if (config.enabled) "Active" else "Disabled",
+            title = stringResource(R.string.weather_enable),
+            subtitle = if (config.enabled) stringResource(R.string.active_string) else stringResource(R.string.disable),
             icon = Icons.Default.Cloud,
             enabled = config.enabled && supportsCustomization,
             isDarkTheme = isDarkTheme
@@ -647,14 +649,14 @@ fun WeatherConfigContent(
                         Spacer(modifier = Modifier.width(16.dp))
                         Column(modifier = Modifier.weight(1f)) {
                             Text(
-                                text = "Show Location",
+                                text = stringResource(R.string.weather_locations),
                                 style = MaterialTheme.typography.bodyLarge,
                                 fontWeight = FontWeight.Medium,
                                 color = if (isDarkTheme) Color.White else MaterialTheme.colorScheme.onSurface
                             )
                             Spacer(modifier = Modifier.height(4.dp))
                             Text(
-                                text = if (config.showLocation) "Visible" else "Hidden",
+                                text = if (config.showLocation) stringResource(R.string.visible_string) else stringResource(R.string.hidden_string),
                                 style = MaterialTheme.typography.bodySmall,
                                 color = if (isDarkTheme)
                                     Color.White.copy(alpha = 0.5f)
@@ -719,14 +721,14 @@ fun WeatherConfigContent(
                         Spacer(modifier = Modifier.width(16.dp))
                         Column(modifier = Modifier.weight(1f)) {
                             Text(
-                                text = "Show Weather Text",
+                                text = stringResource(R.string.weather_show),
                                 style = MaterialTheme.typography.bodyLarge,
                                 fontWeight = FontWeight.Medium,
                                 color = if (isDarkTheme) Color.White else MaterialTheme.colorScheme.onSurface
                             )
                             Spacer(modifier = Modifier.height(4.dp))
                             Text(
-                                text = if (config.showText) "Visible" else "Hidden",
+                                text = if (config.showText) stringResource(R.string.visible_string) else stringResource(R.string.hidden_string),
                                 style = MaterialTheme.typography.bodySmall,
                                 color = if (isDarkTheme)
                                     Color.White.copy(alpha = 0.5f)
@@ -771,7 +773,7 @@ fun WeatherConfigContent(
                                 } catch (e: Exception) {
                                     android.widget.Toast.makeText(
                                         context,
-                                        "Weather provider not installed",
+                                        context.getString(R.string.weather_provider),
                                         android.widget.Toast.LENGTH_SHORT
                                     ).show()
                                 }
@@ -804,14 +806,14 @@ fun WeatherConfigContent(
                         Spacer(modifier = Modifier.width(16.dp))
                         Column(modifier = Modifier.weight(1f)) {
                             Text(
-                                text = "Weather Settings",
+                                text = stringResource(R.string.weather_settings),
                                 style = MaterialTheme.typography.bodyLarge,
                                 fontWeight = FontWeight.Medium,
                                 color = if (isDarkTheme) Color.White else MaterialTheme.colorScheme.onSurface
                             )
                             Spacer(modifier = Modifier.height(4.dp))
                             Text(
-                                text = "Configure weather provider",
+                                text = stringResource(R.string.weather_settings_summarys),
                                 style = MaterialTheme.typography.bodySmall,
                                 color = if (isDarkTheme)
                                     Color.White.copy(alpha = 0.5f)
@@ -927,14 +929,14 @@ fun WidgetConfigContent(
                     Handler(Looper.getMainLooper()).postDelayed({
                         Toast.makeText(
                             context,
-                            "Widgets applied successfully!",
+                            context.getString(R.string.widgets_success),
                             Toast.LENGTH_SHORT
                         ).show()
                     }, 500)
                 } catch (e: Exception) {
                     Toast.makeText(
                         context,
-                        "Settings saved. Please restart SystemUI manually if changes don't appear.",
+                        context.getString(R.string.restart_systemui),
                         Toast.LENGTH_LONG
                     ).show()
                 }
@@ -943,7 +945,7 @@ fun WidgetConfigContent(
             Handler(Looper.getMainLooper()).post {
                 Toast.makeText(
                     context,
-                    "Error applying widgets: ${e.message}",
+                    context.getString(R.string.widgets_error) + ": ${e.message}",
                     Toast.LENGTH_LONG
                 ).show()
             }
@@ -955,14 +957,14 @@ fun WidgetConfigContent(
         verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
         Text(
-            text = "Widgets",
+            text = stringResource(R.string.tab_widgets),
             style = MaterialTheme.typography.titleLarge,
             fontWeight = FontWeight.Bold,
             color = if (isDarkTheme) Color.White else MaterialTheme.colorScheme.onSurface
         )
         
         Text(
-            text = "Customize lockscreen widgets",
+            text = stringResource(R.string.widgets_settings),
             style = MaterialTheme.typography.bodyMedium,
             color = if (isDarkTheme) 
                 Color.White.copy(alpha = 0.7f) 
@@ -993,7 +995,7 @@ fun WidgetConfigContent(
                     )
                     Spacer(modifier = Modifier.width(12.dp))
                     Text(
-                        text = "Not supported by current clock style. Will be disabled when you apply.",
+                        text = stringResource(R.string.display_support_mess),
                         style = MaterialTheme.typography.bodySmall,
                         color = if (isDarkTheme)
                             Color.White.copy(alpha = 0.8f)
@@ -1028,7 +1030,7 @@ fun WidgetConfigContent(
                 )
                 Spacer(modifier = Modifier.width(12.dp))
                 Text(
-                    text = "Top row: Big widgets (2 max) • Bottom row: Small widgets (4 max)",
+                    text = stringResource(R.string.widgets_topmess),
                     style = MaterialTheme.typography.bodySmall,
                     color = if (isDarkTheme)
                         Color(0xFF93C5FD)
@@ -1070,14 +1072,14 @@ fun WidgetConfigContent(
                             )
                             Spacer(modifier = Modifier.width(12.dp))
                             Text(
-                                text = "Big Widgets",
+                                text = stringResource(R.string.widgets_big),
                                 style = MaterialTheme.typography.titleSmall,
                                 fontWeight = FontWeight.Bold,
                                 color = if (isDarkTheme) Color.White else MaterialTheme.colorScheme.onSurface
                             )
                             Spacer(modifier = Modifier.width(8.dp))
                             Text(
-                                text = "Row 1: ${bigWidgets.size}/2",
+                                text = stringResource(R.string.row_one) + ": ${bigWidgets.size}/2",
                                 style = MaterialTheme.typography.bodySmall,
                                 color = if (isDarkTheme) 
                                     Color.White.copy(alpha = 0.6f) 
@@ -1129,14 +1131,14 @@ fun WidgetConfigContent(
                             )
                             Spacer(modifier = Modifier.width(12.dp))
                             Text(
-                                text = "Small Widgets",
+                                text = stringResource(R.string.widgets_small),
                                 style = MaterialTheme.typography.titleSmall,
                                 fontWeight = FontWeight.Bold,
                                 color = if (isDarkTheme) Color.White else MaterialTheme.colorScheme.onSurface
                             )
                             Spacer(modifier = Modifier.width(8.dp))
                             Text(
-                                text = "Row 2: ${smallWidgets.size}/4",
+                                text = stringResource(R.string.row_tow) + ": ${smallWidgets.size}/4",
                                 style = MaterialTheme.typography.bodySmall,
                                 color = if (isDarkTheme) 
                                     Color.White.copy(alpha = 0.6f) 
@@ -1187,7 +1189,7 @@ fun WidgetConfigContent(
                                 MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.6f)
                         )
                         Text(
-                            text = "No widgets added",
+                            text = stringResource(R.string.no_widgets),
                             style = MaterialTheme.typography.bodyLarge,
                             color = if (isDarkTheme)
                                 Color.White.copy(alpha = 0.5f)
@@ -1205,12 +1207,12 @@ fun WidgetConfigContent(
         
         val buttonEnabled = available.isNotEmpty() && supportsCustomization && (canAddBig || canAddSmall)
         val buttonText = when {
-            !supportsCustomization -> "Not Supported by Clock"
-            available.isEmpty() -> "All Widgets Added"
-            !canAddBig && !canAddSmall -> "Both Rows Full"
-            !canAddBig -> "Row 1 Full (Row 2 Available)"
-            !canAddSmall -> "Row 2 Full (Row 1 Available)"
-            else -> "Add Widget"
+            !supportsCustomization -> stringResource(R.string.not_support)
+            available.isEmpty() -> stringResource(R.string.widgets_added)
+            !canAddBig && !canAddSmall -> stringResource(R.string.row_full)
+            !canAddBig -> stringResource(R.string.row_onefull)
+            !canAddSmall -> stringResource(R.string.row_towfull)
+            else -> stringResource(R.string.add_widgets)
         }
         
         Button(
@@ -1287,7 +1289,7 @@ fun WidgetConfigContent(
                 }
                 Spacer(modifier = Modifier.width(8.dp))
                 Text(
-                    text = if (isApplying) "Applying..." else "Apply Widget Changes",
+                    text = if (isApplying) stringResource(R.string.applying) else stringResource(R.string.apply_widgets),
                     style = MaterialTheme.typography.titleMedium,
                     fontWeight = FontWeight.SemiBold
                 )
@@ -1311,7 +1313,7 @@ fun WidgetConfigContent(
                 )
                 Spacer(modifier = Modifier.width(8.dp))
                 Text(
-                    text = "Cancel Changes",
+                    text = stringResource(R.string.cancel_changes),
                     style = MaterialTheme.typography.titleMedium,
                     fontWeight = FontWeight.SemiBold
                 )
@@ -1327,9 +1329,14 @@ fun WidgetConfigContent(
             onSelect = { selectedWidget ->
                 val canAdd = if (selectedWidget.span == 2) canAddBig else canAddSmall
                 if (!canAdd) {
+                    val maxLimitMessage = if (selectedWidget.span == 2) {
+                        R.string.row_onemax
+                } else {
+                        R.string.row_towmax
+                }
                     Toast.makeText(
                         context,
-                        if (selectedWidget.span == 2) "Row 1 is full (max 2 big widgets)" else "Row 2 is full (max 4 small widgets)",
+                        context.getString(maxLimitMessage),
                         Toast.LENGTH_SHORT
                     ).show()
                 } else {
@@ -1393,7 +1400,7 @@ private fun WidgetItemCard(
                 )
                 Spacer(modifier = Modifier.height(4.dp))
                 Text(
-                    text = if (widget.span == 2) "Big Widget" else "Small Widget",
+                    text = if (widget.span == 2) stringResource(R.string.widgets_big) else stringResource(R.string.widgets_small),
                     style = MaterialTheme.typography.bodySmall,
                     color = if (isDarkTheme)
                         Color.White.copy(alpha = 0.5f)
@@ -1558,10 +1565,11 @@ fun SliderCard(
     }
 }
 
+@Composable
 private fun getStyleName(style: Int): String {
     return when (style) {
-        0 -> "Default"
-        1 -> "Minimal"
-        else -> "Unknown"
+        0 -> stringResource(R.string.default_value)
+        1 -> stringResource(R.string.minimal_string)
+        else -> stringResource(R.string.unknown_string)
     }
 }

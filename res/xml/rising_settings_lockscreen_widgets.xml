@@ -36,8 +36,8 @@
 
     <com.android.settings.preferences.ui.AdaptivePreference
         android:key="lockscreen_customizer"
-        android:title="Widgets layout"
-        android:summary="Add or remove or edit the widgets"
+        android:title="@string/widgets_layout"
+        android:summary="@string/widgets_layout_summary"
         lineage:position="bottom">
         <intent
             android:action="android.intent.action.MAIN"

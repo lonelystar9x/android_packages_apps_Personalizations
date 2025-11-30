@@ -25,6 +25,7 @@ import androidx.compose.ui.graphics.vector.*
 import androidx.compose.ui.platform.*
 import androidx.compose.ui.res.*
 import androidx.compose.ui.unit.*
+import com.android.settings.R
 
 @Composable
 fun LockscreenPreviewTheme(content: @Composable () -> Unit) {
@@ -65,18 +66,18 @@ fun WidgetIcon(widget: String): ImageVector {
 fun WidgetLabel(widget: String): String {
     return when (widget) {
         "" -> "None"
-        "calculator" -> "Calculator"
-        "media" -> "Media"
-        "timer" -> "Timer"
-        "torch" -> "Torch"
-        "weather" -> "Weather"
-        "wifi" -> "WiFi"
-        "data" -> "Data"
-        "ringer" -> "Ringer"
-        "bt" -> "Bluetooth"
-        "hotspot" -> "Hotspot"
-        "wallet" -> "Wallet"
-        "qrscanner" -> "QR Scanner"
+        "calculator" -> stringResource(R.string.calculator)
+        "media" -> stringResource(R.string.media)
+        "timer" -> stringResource(R.string.timer)
+        "torch" -> stringResource(R.string.torch)
+        "weather" -> stringResource(R.string.tab_weather)
+        "wifi" -> stringResource(R.string.wifi)
+        "data" -> stringResource(R.string.data)
+        "ringer" -> stringResource(R.string.ringer)
+        "bt" -> stringResource(R.string.bluetooth)
+        "hotspot" -> stringResource(R.string.hotspot)
+        "wallet" -> stringResource(R.string.wallet)
+        "qrscanner" -> stringResource(R.string.scaner)
         else -> widget
     }
 }

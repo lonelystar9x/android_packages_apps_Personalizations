@@ -33,8 +33,10 @@ import androidx.compose.ui.geometry.*
 import androidx.compose.ui.graphics.*
 import androidx.compose.ui.input.pointer.*
 import androidx.compose.ui.platform.*
+import androidx.compose.ui.res.*
 import androidx.compose.ui.text.font.*
 import androidx.compose.ui.unit.*
+import com.android.settings.R
 
 enum class CustomizerTab {
     CLOCK,
@@ -255,11 +257,11 @@ private fun CircularTab(
 @Composable
 private fun CustomizerTab.displayName(): String {
     return when (this) {
-        CustomizerTab.CLOCK -> "Clock"
-        CustomizerTab.WIDGETS -> "Widgets"
-        CustomizerTab.NOWBAR -> "Now Bar"
-        CustomizerTab.PEEK_DISPLAY -> "Peek"
-        CustomizerTab.WEATHER -> "Weather"
+        CustomizerTab.CLOCK -> stringResource(R.string.tab_clock)
+        CustomizerTab.WIDGETS -> stringResource(R.string.tab_widgets)
+        CustomizerTab.NOWBAR -> stringResource(R.string.tab_now)
+        CustomizerTab.PEEK_DISPLAY -> stringResource(R.string.tab_peek)
+        CustomizerTab.WEATHER -> stringResource(R.string.tab_weather)
     }
 }
 

@@ -163,14 +163,14 @@ fun ClockConfigContent(
         verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
         Text(
-            text = "Clock Style",
+            text = stringResource(R.string.clock_style),
             style = MaterialTheme.typography.titleLarge,
             fontWeight = FontWeight.Bold,
             color = if (isDarkTheme) Color.White else MaterialTheme.colorScheme.onSurface
         )
         
         Text(
-            text = "Swipe on the preview to browse styles",
+            text = stringResource(R.string.clock_style_summary),
             style = MaterialTheme.typography.bodyMedium,
             color = if (isDarkTheme) 
                 Color.White.copy(alpha = 0.7f) 
@@ -218,7 +218,7 @@ fun ClockConfigContent(
                 Spacer(modifier = Modifier.width(16.dp))
                 Column(modifier = Modifier.weight(1f)) {
                     Text(
-                        text = "Current Style",
+                        text = stringResource(R.string.current_style),
                         style = MaterialTheme.typography.labelMedium,
                         color = if (isDarkTheme)
                             Color.White.copy(alpha = 0.6f)
@@ -272,14 +272,14 @@ fun ClockConfigContent(
                     Spacer(modifier = Modifier.width(12.dp))
                     Column {
                         Text(
-                            text = "Limited Customization",
+                            text = stringResource(R.string.limited_customization),
                             style = MaterialTheme.typography.titleSmall,
                             fontWeight = FontWeight.Bold,
                             color = if (isDarkTheme) Color.White else MaterialTheme.colorScheme.onSurface
                         )
                         Spacer(modifier = Modifier.height(4.dp))
                         Text(
-                            text = "This clock style doesn't support widgets, weather, now bar, or peek display. These features will be disabled when you apply this clock.",
+                            text = stringResource(R.string.limited_customization_summarys),
                             style = MaterialTheme.typography.bodySmall,
                             color = if (isDarkTheme)
                                 Color.White.copy(alpha = 0.7f)
@@ -333,7 +333,7 @@ fun ClockConfigContent(
                     Spacer(modifier = Modifier.width(16.dp))
                     Column(modifier = Modifier.weight(1f)) {
                         Text(
-                            text = "Clock Font",
+                            text = stringResource(R.string.clock_font),
                             style = MaterialTheme.typography.bodyLarge,
                             fontWeight = FontWeight.Medium,
                             color = if (isDarkTheme) Color.White else MaterialTheme.colorScheme.onSurface
@@ -345,7 +345,9 @@ fun ClockConfigContent(
                                     context,
                                     fontManager.allFontPackages[selectedFontIndex]
                                 )
-                            } else "System Default",
+                            } else {
+                            stringResource(R.string.system_default)
+                            },
                             style = MaterialTheme.typography.bodySmall,
                             color = if (isDarkTheme)
                                 Color.White.copy(alpha = 0.5f)
@@ -415,7 +417,7 @@ fun ClockConfigContent(
             }
             Spacer(modifier = Modifier.width(8.dp))
             Text(
-                text = if (isApplying) "Applying..." else "Apply Clock Style",
+                text = if (isApplying) stringResource(R.string.applying) else stringResource(R.string.apply_theme),
                 style = MaterialTheme.typography.titleMedium,
                 fontWeight = FontWeight.SemiBold,
                 color = if (isDarkTheme) Color.Black else MaterialTheme.colorScheme.onPrimary
@@ -428,7 +430,7 @@ fun ClockConfigContent(
             onDismissRequest = { showFontPicker = false },
             title = { 
                 Text(
-                    "Select Font",
+                    text = stringResource(R.string.select_font),
                     style = MaterialTheme.typography.titleLarge,
                     fontWeight = FontWeight.Bold,
                     color = if (isDarkTheme) Color.White else MaterialTheme.colorScheme.onSurface
@@ -490,7 +492,7 @@ fun ClockConfigContent(
                     shape = RoundedCornerShape(20.dp)
                 ) {
                     Text(
-                        "Close",
+                        text = stringResource(R.string.close),
                         color = if (isDarkTheme) Color.White else MaterialTheme.colorScheme.primary
                     )
                 }
@@ -580,7 +582,7 @@ private suspend fun applyClockChangesAndRestart(
                 Handler(Looper.getMainLooper()).postDelayed({
                     android.widget.Toast.makeText(
                         context,
-                        "Settings applied successfully!",
+                        context.getString(R.string.apply_success),
                         android.widget.Toast.LENGTH_SHORT
                     ).show()
                     onSuccess()
@@ -588,7 +590,7 @@ private suspend fun applyClockChangesAndRestart(
             } catch (e: Exception) {
                 android.widget.Toast.makeText(
                     context,
-                    "Settings saved. Please restart SystemUI manually if changes don't appear.",
+                    context.getString(R.string.restart_systemui),
                     android.widget.Toast.LENGTH_LONG
                 ).show()
                 onFailure()
@@ -598,7 +600,7 @@ private suspend fun applyClockChangesAndRestart(
         Handler(Looper.getMainLooper()).post {
             android.widget.Toast.makeText(
                 context,
-                "Settings saved. Please restart SystemUI manually if changes don't appear.",
+                context.getString(R.string.restart_systemui),
                 android.widget.Toast.LENGTH_LONG
             ).show()
             onFailure()
